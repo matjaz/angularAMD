@@ -1,7 +1,7 @@
 /*jslint node: true */
 /*global define */
 define(['app'], function (app) {
-    app.register.controller("navMenuController", ['$scope', '$route', 'SiteName', '$window', '$location', function ($scope, $route, SiteName, $window, $location) {
+    app.controller("navMenuController", function ($scope, $route, SiteName, $window, $location) {
         var tab_name = $route.current.navTab,
             ga_path = SiteName + $location.path();
         
@@ -14,9 +14,9 @@ define(['app'], function (app) {
         //console.log("Sending to GA: " + ga_path);
         $window._gaq.push(['_trackPageview', ga_path]);
         
-    }]);
+    });
     
-    app.register.directive('navMenu', function () {
+    app.directive('navMenu', function () {
         return {
             restrict: 'A',
             controller: 'navMenuController',
